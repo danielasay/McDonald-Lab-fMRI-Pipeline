@@ -77,3 +77,6 @@ cd ~/research_bin/r01/BIDS/derivatives/fmriprep/sub-alena/stimuli/MST
 ls
 
 done
+
+echo "Check the output and see if it's what you were expecting."
+echo "If there weren't any errors and the output looks okay, move on to the next step: smooth and scale"
