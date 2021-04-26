@@ -24,7 +24,7 @@ cd ~/research_bin/BIDS; touch subjList.txt
 
 # In addition to the func, anat, log and figures dirs that are already there, create the following dirs
 
-mkdir -p afni_out regressor_files/FN regressor_files/VPA stimuli/FN stimuli/ VPA native_func native_afni_out
+mkdir -p afni_out regressor_files/FN regressor_files/VPA stimuli/FN stimuli/VPA native_func native_afni_out
 
 
 echo "The regressor_files directory is for the motion files from fMRIPrep. The stimuli directory is for the timing files. The afni_out and native_afni_out dirs are for the output from afni 3Ddeconvolve. native_func is for functional data output into native space from fmriprep." > README.txt
