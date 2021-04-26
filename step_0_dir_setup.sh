@@ -11,6 +11,8 @@ mkdir -p research_bin/BIDS/derivatives/fmriprep
 
 mkdir -p research_bin/copied
 
+# create code dir and pull code down from github repo
+
 cd research_bin/code; git clone https://github.com/danielasay/McDonald-Lab-fMRI-Pipeline
 
 cd ~/research_bin/BIDS; touch subjList.txt
