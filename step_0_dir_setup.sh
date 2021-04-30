@@ -1,32 +1,50 @@
 #!/bin/bash
 
+## Script that sets up the necessary directory structure for fMRI processing on CMIG server
 
-## Script that sets up the necessary directory structure for fMRI processing
+## Pass the subject's ID when running this script (e.g.bash setup.sh sub-pilot01)
 
-## All directories will be placed in home dir
+if [ $# -eq 0 ]
+  then
+    echo "No arguments supplied..."
+    echo "Please supply subject ID."
+    echo "Example: bash setup.sh sub-pilot01"
+    exit
+else
+	echo "Subject ID is" $1
+	echo "Runnning script..."
+	echo "Setting up file structure..."
+fi
 
-cd ~
+#: <<'END'
 
-mkdir -p research_bin/BIDS/derivatives/fmriprep
-
-mkdir -p research_bin/copied
+sub=$1
+workdir=/home/mmilmcd2/fmri_processing/afni
+subjdir=/home/mmilmcd2/fmri_processing/afni/$sub
+fmriprepdir=/home/mmilmcd2/fmri_processing/fmriprep/derivatives/fmriprep/$sub
 
 # create code dir and pull code down from github repo
 
-cd research_bin/code; git clone https://github.com/danielasay/McDonald-Lab-fMRI-Pipeline
+mkdir -p $subjdir/code
 
-cd ~/research_bin/BIDS; touch subjList.txt
+cd $subjdir/code; git clone https://github.com/danielasay/McDonald-Lab-fMRI-Pipeline; 
 
-### COPY DATA FROM FMRIPREP INTO fmriprep dir. The directory with the data should be called sub-[subname]. Uncomment following line 
-## when fmriprep data has been copied
+cd McDonald-Lab-fMRI-Pipeline; cp * ..; cd ..; mv McDonald-Lab-fMRI-Pipeline backup
 
-# cd sub
-
-# In addition to the func, anat, log and figures dirs that are already there, create the following dirs
+cd $subjdir
 
 mkdir -p afni_out regressor_files/FN regressor_files/VPA stimuli/FN stimuli/VPA native_func native_afni_out
 
+echo $sub >> $workdir/subjList.txt
 
+### COPY DATA FROM FMRIPREP INTO subject's dir.
+
+cd $fmriprepdir
+cp -r * $subjdir
+
+# In addition to the func, anat, log and figures dirs that are already there, create the following dirs
+
+echo "Done!"
 echo "The regressor_files directory is for the motion files from fMRIPrep. The stimuli directory is for the timing files. The afni_out and native_afni_out dirs are for the output from afni 3Ddeconvolve. native_func is for functional data output into native space from fmriprep." > README.txt
 
 
