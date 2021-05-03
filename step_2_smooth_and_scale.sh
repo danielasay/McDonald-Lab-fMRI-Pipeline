@@ -5,10 +5,12 @@
 ## This scipt will do 4 things: 1) Change info in the structural data header file 2) Smooth/blur the functional data to 4mm kernel
 ## 3) Scale the functional data 4) Take a union of the masks from each functional run.
 
+subj=""
+func_dir=~/fmri_processing/afni/${subj}/func
 
-for sub in sub*; do
+for sub in ${subj}; do
 
-cd #PATH TO SUB'S FUNCTIONAL DATA IN NATIVE SPACE
+cd ${func_dir}
 
 # Change the header file to say that it's in native space rather than tlrc space. This well fix downstream problems w/ AFNI viewer
 
@@ -22,7 +24,7 @@ cd #PATH TO SUB'S FUNCTIONAL DATA IN NATIVE SPACE
 
 # All 3 FN func
 
-  for run in 1 2 3; do
+  for run in 1 2; do
     3dBlurToFWHM -FWHM 4.0 -prefix FN_r${run}_blur.nii -mask ${sub}_task-FN_run-${run}_space-T1w_desc-brain_mask.nii.gz \
           ${sub}_task-FN_run-${run}_space-T1w_desc-preproc_bold.nii.gz
   done
@@ -32,7 +34,7 @@ cd #PATH TO SUB'S FUNCTIONAL DATA IN NATIVE SPACE
 
 #all 3 FN func
 
-  for run in 1 2 3; do
+  for run in 1 2; do
   	3dTstat -prefix rm._FN_mean_r${run}.nii FN_r${run}_blur.nii
   	3dcalc -a FN_r${run}_blur.nii -b rm._FN_mean_r${run}.nii \
          -c ${sub}_task-FN_run-${run}_space-T1w_desc-brain_mask.nii.gz                            \

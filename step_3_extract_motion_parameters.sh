@@ -6,11 +6,13 @@
 # This script will take the regressor files that fmriprep outputs and put them into the regress_dir. It will also copy the relevant 
 ## Python scripts into the regress_dir. The python scripts extract the information we're interested in from the regressor files.
 
-for sub in sub*; do
+subj=""
 
-func_dir= #UPDATE WITH PATH TO FUNCTIONAL DATA DIR
-regress_dir= #UPDATE WITH PATH TO THE REGRESSOR (MOTION) FILES
-code_dir= #UPDATE WITH PATH TO YOUR CODE DIR
+for sub in ${subj}; do
+
+func_dir=~/fmri_processsing/afni/${sub}/func
+regress_dir=~/fmri_processsing/afni/${sub}/regressor_files
+code_dir=~/fmri_processsing/afni/${sub}/code
 
 cd ${func_dir}
 
@@ -19,9 +21,9 @@ cd ${func_dir}
 ### and others it's regressors. Not sure why, just be ready to modify the script.
 
 	for task in FN; do
-		for run in 1 2 3; do
+		for run in 1 2; do
 			cp ${sub}_task-${task}_run-${run}_desc-confounds_timeseries.tsv ../regressor_files/${task}/
-			cp ${code_dir}/modify_regressors_${task}.py ${regress_dir}/${task}
+			cp ${code_dir}/step_4_modify_regressors_${task}.py ${regress_dir}/${task}
 		done
 	done
 
