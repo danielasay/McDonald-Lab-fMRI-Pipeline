@@ -13,6 +13,10 @@ for sub in ${subj}; do
 
 cd ${func_dir}
 
+echo "Changing Header Files. Don't be alarmed at WARNING messages."
+
+sleep 5
+
 # Change the header file to say that it's in native space rather than tlrc space. This well fix downstream problems w/ AFNI viewer
 
   for run in 1 2; do
@@ -20,6 +24,9 @@ cd ${func_dir}
     3drefit -space ORIG ${sub}_task-FN_run-${run}_space-T1w_desc-brain_mask.nii.gz
   done
 
+echo "Smoothing data..."
+echo "This will take a bit of time."
+sleep 4
 
 #Smooth the fmriprep output with a 4mm kernel. The 3dBlurToFWHM will only blur things to the 4mm kernel, not apply 4mm of blur to everything.
 
@@ -30,6 +37,7 @@ cd ${func_dir}
           ${sub}_task-FN_run-${run}_space-T1w_desc-preproc_bold.nii.gz
   done
 
+echo "Scaling data..."
 
 #Scale the data to 100
 
@@ -43,6 +51,8 @@ cd ${func_dir}
          -prefix FN_r${run}_scale.nii
   done
 rm rm*
+
+echo "Creating union of masks..."
 
 # Take a Union of masks created 
 
