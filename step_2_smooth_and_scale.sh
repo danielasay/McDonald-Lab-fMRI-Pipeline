@@ -5,7 +5,8 @@
 ## This scipt will do 4 things: 1) Change info in the structural data header file 2) Smooth/blur the functional data to 4mm kernel
 ## 3) Scale the functional data 4) Take a union of the masks from each functional run.
 
-subj=""
+workdir=~/fmri_processing/afni
+subj=$( tail -n 1 subjlist.txt )
 func_dir=~/fmri_processing/afni/${subj}/func
 
 for sub in ${subj}; do
