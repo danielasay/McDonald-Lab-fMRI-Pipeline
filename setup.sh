@@ -31,7 +31,7 @@ mkdir $subjdir; cd $subjdir
 
 mkdir -p code afni_out regressor_files/FN regressor_files/VPA stimuli/FN stimuli/VPA native_func native_afni_out
 
-cd $workdir/master_code; git pull; cp * $subjdir/code
+cd $workdir/master_code; cp * $subjdir/code
 
 echo $sub >> $workdir/subjlist.txt
 
