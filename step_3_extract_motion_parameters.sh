@@ -6,7 +6,8 @@
 # This script will take the regressor files that fmriprep outputs and put them into the regress_dir. It will also copy the relevant 
 ## Python scripts into the regress_dir. The python scripts extract the information we're interested in from the regressor files.
 
-subj=""
+workdir=~/fmri_processing/afni
+subj=$( tail -n 1 $workdir/subjlist.txt )
 
 for sub in ${subj}; do
 

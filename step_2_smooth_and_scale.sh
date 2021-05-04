@@ -63,3 +63,8 @@ done
 echo "Step 2 is complete! Take a look at the output printed to the terminal and check for errors."
 echo "If there aren't any, go ahead to move on to step 3: Extract Motion Parameters"
 
+sleep 10
+
+echo "Running step 3..."
+
+bash step_3_extract_motion_parameters.sh
