@@ -83,4 +83,19 @@ ls
 done
 
 echo "Check the output and see if it's what you were expecting."
-echo "If there weren't any errors and the output looks okay, move on to the next step: smooth and scale"
+echo "If there weren't any errors and the output looks okay, move on to the next step:"
+echo "smooth and scale"
+echo "You should see a .1D file for each condition."
+
+sleep 15
+
+echo "Running step 2..."
+
+sleep 5
+
+bash $workdir/$sub/code/step_2_smooth_and_scale.sh
+
+
+
+
+

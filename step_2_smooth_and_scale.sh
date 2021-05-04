@@ -6,7 +6,7 @@
 ## 3) Scale the functional data 4) Take a union of the masks from each functional run.
 
 workdir=~/fmri_processing/afni
-subj=$( tail -n 1 subjlist.txt )
+subj=$( tail -n 1 $workdir/subjlist.txt )
 func_dir=~/fmri_processing/afni/${subj}/func
 
 for sub in ${subj}; do
@@ -33,7 +33,7 @@ cd ${func_dir}
 
 #Scale the data to 100
 
-#all 3 FN func
+#Both FN func
 
   for run in 1 2; do
   	3dTstat -prefix rm._FN_mean_r${run}.nii FN_r${run}_blur.nii
