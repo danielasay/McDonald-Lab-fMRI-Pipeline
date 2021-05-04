@@ -14,12 +14,14 @@ workdir=~/fmri_processing/afni
 cd ${workdir}
 
 #Check whether the file subjList.txt exists; if not, create it
-if [ ! -f subjList.txt ]; then
-	ls | grep ^sub- > subjList.txt
+if [ ! -f subjlist.txt ]; then
+        ls | grep ^sub- > subjlist.txt
 fi
 
+sub=$( tail -n 1 subjlist.txt )
+
 #Loop over all subjects and format timing files into txt format for FN runs 1 and 2
-for subj in `cat subjList.txt`; do
+for subj in $sub; do
 	cd ${workdir}/$subj/func
 	cat ${subj}_task-FN_run-1_events.tsv | awk '{if ($3=="PSSNovel") {print $1, $2, 1}}' > PSSnovel_run1.txt
 	cat ${subj}_task-FN_run-1_events.tsv | awk '{if ($3=="Novel") {print $1, $2, 1}}' > novel_FN_run1.txt
