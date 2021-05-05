@@ -33,11 +33,18 @@ echo "Now run the Python Scripts for each task. They are found in their respecti
 
 cd ${regress_dir}/FN
 
-echo "Run with this command: python modify_regressors_FN.py"
+echo "Done!"
+sleep 2
+echo "Check for any errors."
+
+sleep 10
+
+echo "Running step 4: python modify_regressors_FN.py..."
+sleep 5
 
 done
 
-
+python step_4_modify_regressors_FN.py
 
 
 
