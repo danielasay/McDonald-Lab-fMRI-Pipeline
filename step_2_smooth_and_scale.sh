@@ -41,7 +41,7 @@ echo "Scaling data..."
 
 #Scale the data to 100
 
-#Both FN func
+#all 3 FN func
 
   for run in 1 2; do
   	3dTstat -prefix rm._FN_mean_r${run}.nii FN_r${run}_blur.nii
@@ -64,7 +64,5 @@ echo "Step 2 is complete! Take a look at the output printed to the terminal and 
 echo "If there aren't any, go ahead to move on to step 3: Extract Motion Parameters"
 
 sleep 10
-
-echo "Running step 3..."
-
-bash step_3_extract_motion_parameters.sh
+echo "Running step 3...."
+bash $workdir/$sub/code/step_3_extract_motion_parameters.sh

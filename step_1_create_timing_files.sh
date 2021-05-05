@@ -6,7 +6,6 @@
 
 workdir=~/fmri_processing/afni
 
-
 ## SUBJLIST SHOULD HAVE A LIST OF ALL SUBJECTS IN FIRST COLUMN
 
 ## YOU WILL NEED THE TIMING FILES FROM DROPBOX, SHOULD BE PLACED IN THE FUNC DIR
@@ -15,7 +14,7 @@ cd ${workdir}
 
 #Check whether the file subjList.txt exists; if not, create it
 if [ ! -f subjlist.txt ]; then
-        ls | grep ^sub- > subjlist.txt
+	ls | grep ^sub- > subjlist.txt
 fi
 
 sub=$( tail -n 1 subjlist.txt )
@@ -94,8 +93,3 @@ echo "Running step 2..."
 sleep 5
 
 bash $workdir/$sub/code/step_2_smooth_and_scale.sh
-
-
-
-
-
