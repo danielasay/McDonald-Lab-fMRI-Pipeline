@@ -3,14 +3,16 @@
 
 ######### Step 4 After FMRIPREP ###########
 
-### UPDATE SUBJECT VARIABLE
+### Grab 2nd argument
 
-tmp = open("/home/mmilmcd2/fmri_processing/afni/subjlist.txt", "r").readlines()
-subject = tmp[-1]
-
+import sys
 import os
 import time
 import pandas as pd
+
+arg_list = sys.argv
+
+subject = arg_list[1]
 
 # Run 1
 
@@ -41,12 +43,13 @@ df.to_csv (r'FN_run_2.csv', index = False, header=True)
 
 
 print("Done!")
-sleep(2)
+time.sleep(2)
 print("Check for any errors.")
-sleep(10)
+time.sleep(10)
 print("Running step 5: csv_to_text.sh...") 
-sleep(3)
+time.sleep(3)
 os.chdir("/home/mmilmcd2/fmri_processing/afni")
 os.chdir(f"{subject}/code")
 
 os.system("bash step_5_csv_to_text.sh")
+
