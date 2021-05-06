@@ -5,10 +5,11 @@
 
 ### UPDATE SUBJECT VARIABLE
 
+tmp = open("/home/mmilmcd2/fmri_processing/afni/subjlist.txt", "r").readlines()
+subject = tmp[-1]
 
-subject = "sub-"
-
-
+import os
+import time
 import pandas as pd
 
 # Run 1
@@ -39,13 +40,13 @@ df.to_csv (r'FN_run_2.csv', index = False, header=True)
 
 
 
-print("Great job! Now run the csv_to_text.sh script if you have run the python program for each task.")
+print("Done!")
+sleep(2)
+print("Check for any errors.")
+sleep(10)
+print("Running step 5: csv_to_text.sh...") 
+sleep(3)
+os.chdir("/home/mmilmcd2/fmri_processing/afni")
+os.chdir(f"{subject}/code")
 
-print("If not, go into the VPA directory and run that python script using this command:")
-
-print("python modify_regressors_VPA.py")
-
-
-
-
-
+os.system("bash step_5_csv_to_text.sh")
