@@ -11,9 +11,9 @@ subj=$( tail -n 1 $workdir/subjlist.txt )
 
 for sub in ${subj}; do
 
-func_dir=~/fmri_processsing/afni/${sub}/func
-regress_dir=~/fmri_processsing/afni/${sub}/regressor_files
-code_dir=~/fmri_processsing/afni/${sub}/code
+func_dir=~/fmri_processing/afni/${sub}/func
+regress_dir=~/fmri_processing/afni/${sub}/regressor_files
+code_dir=~/fmri_processing/afni/${sub}/code
 
 cd ${func_dir}
 
