@@ -77,7 +77,7 @@ cp FN_*.1D ../stimuli/FN
 
 #cd ~/research_bin/BIDS/derivatives/fmriprep/sub-alena/stimuli/MST
 
-ls
+ls | grep .1D
 
 done
 
