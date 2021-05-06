@@ -65,3 +65,4 @@ ls $workdir/$sub/native_afni_out
 sleep 5
 echo "The pipeline is now finished. Bring the data from this folder"
 echo "down to your local computer and look at brain activation using the afni GUI."
+cd $native_afni_out
