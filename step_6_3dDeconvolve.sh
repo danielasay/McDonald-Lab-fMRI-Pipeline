@@ -3,7 +3,8 @@
 # 3dDeconvolve script that creates GLM. This was written to analyze block design data. 29.9 seconds is the length of each block
 # The baseline comparison (arrow task in this case) is implicit in the model since it is not specified. 
 
-sub="sub-pilot02" 
+workdir=~/fmri_processing/afni
+sub=$( tail -n 1 $workdir/subjlist.txt ) 
 
 func_dir=~/fmri_processing/afni/${sub}/func
 stim_dir=~/fmri_processing/afni/${sub}/stimuli
@@ -48,7 +49,19 @@ cd $func_dir
     -errts errts.FN.${sub}-native                                     \
     -bucket stats.FN.${sub}-native
 
-
-
+echo "3dDeconvolve is finished!"
+sleep 2
+echo "Copying output to native_afni_out..."
+sleep 2
 cp -v *.FN.${sub}* ../native_afni_out
-
+echo "Done copying!"
+echo "Copying T1 from anat to native_afni_out..."
+cp ~/fmri_processing/afni/${sub}/anat/${sub}_desc-preproc_T1w.nii.gz ../native_afni_out
+echo "Done!"
+sleep 1
+echo "Take a look at the output." 
+echo "Make sure the stats file and T1 are present"
+ls $workdir/$sub/native_afni_out
+sleep 5
+echo "The pipeline is now finished. Bring the data from this folder"
+echo "down to your local computer and look at brain activation using the afni GUI."
