@@ -33,10 +33,12 @@ done
 echo "Finished!"
 sleep 3
 echo "Do you have a concatenated motion.txt file?"
+ls $func_dir
 ls $func_dir | grep FN_motion.txt
 sleep 6
 echo "Running step 6: 3dDeconvolve..."
 sleep 3
+cd $workdir/$sub/code
 bash step_6_3dDeconvolve.sh 
 
 
