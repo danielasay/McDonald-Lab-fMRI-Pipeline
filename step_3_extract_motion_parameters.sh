@@ -17,7 +17,8 @@ code_dir=~/fmri_processing/afni/${sub}/code
 
 cd ${func_dir}
 
-
+echo "Running step 3..."
+sleep 3
 ### Copy each regressor file to regressor_file directory. Copy relevant python scripts as well. Sometimes it is a timeseries.tsv file
 ### and others it's regressors. Not sure why, just be ready to modify the script.
 
@@ -35,7 +36,7 @@ echo "Done!"
 sleep 2
 echo "Check for any errors."
 
-sleep 10
+sleep 5
 
 echo "Running step 4: python modify_regressors_FN.py..."
 sleep 5
