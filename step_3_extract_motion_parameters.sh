@@ -29,8 +29,6 @@ cd ${func_dir}
 	done
 
 
-echo "Now run the Python Scripts for each task. They are found in their respective directories."
-
 cd ${regress_dir}/FN
 
 echo "Done!"
