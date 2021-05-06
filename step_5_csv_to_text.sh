@@ -5,7 +5,8 @@
 
 # THERE SHOULD BE THE SAME NUMBER OF MOTION FIES AS FUNCTIONAL RUNS. EDIT ACCORDINGLY
 
-subj=""
+workdir=~/fmri_processing/afni
+subj=$( tail -n 1 $workdir/subjlist.txt )
 
 for sub in ${subj}; do
 
@@ -30,3 +31,12 @@ done
 
 
 echo "Finished!"
+sleep 3
+echo "Do you have a concatenated motion.txt file?"
+ls $func_dir | grep FN_motion.txt
+sleep 6
+echo "Running step 6: 3dDeconvolve..."
+sleep 3
+bash step_6_3dDeconvolve.sh 
+
+
