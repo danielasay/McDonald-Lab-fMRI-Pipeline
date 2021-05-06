@@ -57,7 +57,8 @@ for subj in $sub; do
 END
 
 #Convert to AFNI format for FN 
-	
+echo "Converting to .1D format..."
+sleep 2	
 	timing_tool.py -fsl_timing_files PSSnovel*.txt -write_timing FN_PSSnovel.1D
 	timing_tool.py -fsl_timing_files novel_FN*.txt -write_timing FN_novel.1D
 	timing_tool.py -fsl_timing_files repeated*.txt -write_timing FN_repeated.1D
