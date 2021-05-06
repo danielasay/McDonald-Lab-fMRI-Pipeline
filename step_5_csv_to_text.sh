@@ -33,6 +33,8 @@ done
 echo "Finished!"
 sleep 3
 echo "Do you have a concatenated motion.txt file?"
+echo "If you do, it'll show up on the next line. If there's nothing, kill the script and investigate."
+sleep 3
 ls $func_dir | grep FN_motion.txt
 sleep 6
 echo "Running step 6: 3dDeconvolve..."
